@@ -12,9 +12,9 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://changegt.github.io/
-# url: http://localhost:4000/blogs/
-root: /
+url: https://changegt.github.io/public/
+#url: http://localhost:4000/blogs/
+root: /public/
 permalink: :year-:month-:day/:title/
 permalink_defaults:
 
