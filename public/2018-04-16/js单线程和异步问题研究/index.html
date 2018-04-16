@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>js单线程和异步问题研究 | yyf-site</title>
+    <meta name="author" content="yyf" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="1、js引擎机制
+变量提升 js先解析代码中对象和函数，由于ES6前没有块级作用域的概念，只有全局作用域和函数作用域，所以解析的时候会将变量提升到所在作用域的顶端，同时赋值为undefined。
+
+12345678910console.log(a); // undefinedvar a = &#39;a&#39;;console.log(a); // aconsole.log(c); // Uncaught ReferenceError: a is not defined ,a的作用域在函数b中function" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/public/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Mot-clés</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/Promise/">Promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/element-UI/">element-UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/goals/">goals</a></li><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/vue-resource/">vue-resource</a></li><li class="tag-list-item"><a class="tag-list-link" href="/public/tags/vue-router/">vue-router</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/public/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/public/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/public/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="https://changegt.github.io/public"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、js引擎机制"><span class="toc-number">1.</span> <span class="toc-text">1、js引擎机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、js单线程"><span class="toc-number">2.</span> <span class="toc-text">2、js单线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、js异步"><span class="toc-number">3.</span> <span class="toc-text">3、js异步</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            js单线程和异步问题研究
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/public/2018-04-16/js单线程和异步问题研究/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-04-16T08:37:00.000Z" itemprop="datePublished">2018-04-16</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="1、js引擎机制"><a href="#1、js引擎机制" class="headerlink" title="1、js引擎机制"></a>1、js引擎机制</h3><blockquote>
+<p><strong>变量提升</strong> js先解析代码中对象和函数，由于ES6前没有块级作用域的概念，只有全局作用域和函数作用域，所以解析的时候会将变量提升到所在作用域的顶端，同时赋值为undefined。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">'a'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// a</span></span><br><span class="line"><span class="built_in">console</span>.log(c); <span class="comment">// Uncaught ReferenceError: a is not defined ,a的作用域在函数b中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(c); <span class="comment">// undefined</span></span><br><span class="line">	<span class="keyword">var</span> c = <span class="string">'c'</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(c); <span class="comment">// c</span></span><br><span class="line">&#125;</span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>函数提升</strong> 函数的定义分为函数申明（function a(){}），函数表达式（var a = function(){}）和构造函数（new Function()），所以只有函数声明才能支持函数提升，其他两个都是属于变量提升， <strong>同时函数的提升是优先于变量的提升</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="number">1</span>); &#125; <span class="comment">//顶部已经存在了a的函数，此时a的变量将a的函数覆盖了，所以下面执行的是a的变量函数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="number">2</span>); &#125; <span class="comment">//当前函数先于变量提升到顶部</span></span><br><span class="line"></span><br><span class="line">a(); <span class="comment">// 输入 1</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="2、js单线程"><a href="#2、js单线程" class="headerlink" title="2、js单线程"></a>2、js单线程</h3><h3 id="3、js异步"><a href="#3、js异步" class="headerlink" title="3、js异步"></a>3、js异步</h3><pre><code>setTimeout，setInterval等定时器，ajax等涉及http请求的
+</code></pre><p>setTimeout异步机制 【3s时间】</p>
+<p>代码执行到此时，将setTimeout的方法推入event table, 过了3秒后，setTimeout的方法被推入event queue中，然后查看当前主线程是否空闲，空闲就执行，不空闲就等到主线程空闲的时候才去执行</p>
+<p>【event loop 事件循环】<br>1、浏览器js引擎解析的时候会将异步执行代码放入event table<br>2、异步任务在event table中注册函数，当满足条件之后，会被推入event queue<br>3、同步任务进入主线程后一直执行，直到主线程空闲的时候，才会执行event queue中查看是否有可执行的异步任务，有的话就被推入主线程中执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">0</span>);</span><br><span class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">		resolve();</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>宏任务：整体的js代码，setTimeout，setInterval<br>微任务：Promise，process.nextTick</p>
+<p>宏任务先执行，执行结束后，查看是否有微任务，有的话执行，没有的话执行新的宏任务</p>
+
+        
+    </section>
+</article>
+
+
+
+<div class="comments">
+    <!--<div id="disqus_thread">
+        <p class="comment-tips">国内查看评论需要代理~</p>
+    </div>-->
+    <script>
+    window.disqus_config = function () {
+        this.language = 'zh';
+        this.page.url = 'https://changegt.github.io/public/2018-04-16/js单线程和异步问题研究/';
+        this.page.title = 'js单线程和异步问题研究';
+        this.page.identifier = '2018-04-16/js单线程和异步问题研究/';
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://name.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+</div>
+        <footer class="footer">
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+            $(document.body).scrollspy({target: '#aside-inner'});
+            
+        });
+    </script>
+
+</body>
+</html>

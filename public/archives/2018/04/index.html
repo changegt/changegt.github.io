@@ -7,7 +7,7 @@
 
     
 
-    <title>Mot-clé: hexo | yyf-site</title>
+    <title>Archives: 2018/4 | yyf-site</title>
     <meta name="author" content="yyf" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -61,7 +61,7 @@
         
         
         
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="/public/archives">归档</a>
         </li>
         
@@ -123,74 +123,35 @@
 </header>
 
         <div id="content" class="content">
-    <article class="article" itemscope itemprop="blogPost">
+
     
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/public/2018-02-09/hexo-test/">hexo-test</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/public/2018-02-09/hexo-test/">
     
-    <i class="icon-calendar"></i>
     
-    <time datetime="2018-02-08T16:03:34.000Z" itemprop="datePublished">2018-02-09</time>
+    
+    <section class="archives-wrap">
+    <div class="archive-year-wrap">
+    <a href="/public/archives/2018" class="archive-year">2018</a>
+    </div>
+    <ol class="archives">
+    
+
+    <li class="archive-section-item">
+        <article class="archive-article archive-type-post">
+    <div class="archive-article-inner">
+        <header class="archive-article-header">
+            <a href="/public/2018-04-16/js单线程和异步问题研究/">js单线程和异步问题研究</a>
+            (<a class="article-date" href="/public/2018-04-16/js单线程和异步问题研究/">
+    
+    <time datetime="2018-04-16T08:37:00.000Z" itemprop="datePublished">4/16</time>
 </a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/public/tags/hexo/">hexo</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="hexo学习记录"><a href="#hexo学习记录" class="headerlink" title="hexo学习记录"></a>hexo学习记录</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*加载hexo包和相关工具*/</span><br><span class="line"></span><br><span class="line">$ npm install hexo </span><br><span class="line"></span><br><span class="line">$ npm install hexo-server --save  //由于Hexo3.0将服务器模块独立了，所以需要引入</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*初始化hexo项目*/</span><br><span class="line"></span><br><span class="line">$ hexo init [folder]    //新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</span><br><span class="line"></span><br><span class="line">$ hexo new [layout] &lt;title&gt; //新建一篇文章。默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</span><br><span class="line"></span><br><span class="line">$ hexo generate      //生成静态文件。 简写 hexo g</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>启动服务器，默认情况下，访问网址为： <code>http://localhost:4000/</code></p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p --port</code></td>
-<td>重设端口</td>
-</tr>
-<tr>
-<td><code>-s --static</code></td>
-<td>只使用静态文件</td>
-</tr>
-<tr>
-<td><code>-l --log</code></td>
-<td>启动日记记录，使用覆盖记录格式</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*其他*/</span><br><span class="line"></span><br><span class="line">$ hexo deploy       //$ hexo d 部署网站。</span><br><span class="line"></span><br><span class="line">$ hexo render &lt;file1&gt; [file2] ... //渲染文件。</span><br><span class="line"></span><br><span class="line">$ hexo clean //清除缓存文件 (db.json) 和已生成的静态文件 (public)。</span><br></pre></td></tr></table></figure>
-<h3 id="2、安装hexo主题"><a href="#2、安装hexo主题" class="headerlink" title="2、安装hexo主题"></a>2、安装hexo主题</h3><p>hexo官方主题：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
-<blockquote>
-<p>1、初始化一个hexo工程<br>2、选择一种主题，将文件down下来放入hexo工程的themes文件夹内 （或者进入themes后pull下主题）<br>3、修改下载下来的主题中的_config.yml配置文件，同时修改hexo工程路径下面的_config.yml文件的theme参数，改为你需要的主题名称</p>
-</blockquote>
-<h3 id="3、markdown学习"><a href="#3、markdown学习" class="headerlink" title="3、markdown学习"></a>3、markdown学习</h3><blockquote>
-<p>hexo的bolg编写方式是markdown写法，所以需要学习一下markdown</p>
-</blockquote>
-<h3 id="4、编写文章"><a href="#4、编写文章" class="headerlink" title="4、编写文章"></a>4、编写文章</h3>
-        
-    </section>
+)
+        </header>
+    </div>
 </article>
+    </li>
 
 
+</ol></section>
 
 
 
