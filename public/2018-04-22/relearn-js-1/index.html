@@ -7,12 +7,14 @@
 
     
 
-    <title>hexo-test | yyf-site</title>
+    <title>relearn-js-1 | yyf-site</title>
     <meta name="author" content="yyf" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="hexo学习记录1、安装hexo12345/*加载hexo包和相关工具*/$ npm install hexo $ npm install hexo-server --save  //由于Hexo3.0将服务器模块独立了，所以需要引入
-1234567/*初始化hexo项目*/$ hexo init [folder]    //新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。$ hexo new [layout] &amp;lt;title&amp;gt; //新建一篇文章。默认" />
+    <meta name="description" content="重新认识JS——step1以w3c和js高级程序设计为基础来重新认识js
+什么是js1、最流程的脚本语言（反正比php好，啦啦啦）,详情见底部排位图
+2、主要是应用于HTML和Web，但是nodejs的设计让js不在只是适用于网页端，更是想服务端和客户端发展了。（我大前端果然牛逼）
+JS的历史Netscape 发明了JavaScript     =&amp;gt;     微软（JScript），Netscope（JavaScript），CEnvi（ScriptEase） 三足鼎立=&amp;gt;    标准" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -95,7 +97,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo学习记录"><span class="toc-number">1.</span> <span class="toc-text">hexo学习记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装hexo"><span class="toc-number">1.1.</span> <span class="toc-text">1、安装hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、安装hexo主题"><span class="toc-number">1.2.</span> <span class="toc-text">2、安装hexo主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、markdown学习"><span class="toc-number">1.3.</span> <span class="toc-text">3、markdown学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、编写文章"><span class="toc-number">1.4.</span> <span class="toc-text">4、编写文章</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#重新认识JS——step1"><span class="toc-number">1.</span> <span class="toc-text">重新认识JS——step1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是js"><span class="toc-number">1.1.</span> <span class="toc-text">什么是js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS的历史"><span class="toc-number">1.2.</span> <span class="toc-text">JS的历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS的实现"><span class="toc-number">1.3.</span> <span class="toc-text">JS的实现</span></a></li></ol></li></ol>
         
     </div>
 </aside>
@@ -107,21 +109,21 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            hexo-test
+            relearn-js-1
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/public/2018-02-09/hexo-test/">
+            <a class="article-date" href="/public/2018-04-22/relearn-js-1/">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2018-02-08T16:03:34.000Z" itemprop="datePublished">2018-02-09</time>
+    <time datetime="2018-04-22T14:43:50.000Z" itemprop="datePublished">2018-04-22</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/public/tags/hexo/">hexo</a>
+    <a class="article-tag-link" href="/public/tags/es5/">es5</a>, <a class="article-tag-link" href="/public/tags/es6/">es6</a>, <a class="article-tag-link" href="/public/tags/es7/">es7</a>, <a class="article-tag-link" href="/public/tags/js/">js</a>, <a class="article-tag-link" href="/public/tags/relearnJS/">relearnJS</a>
 </div>
 
 
@@ -130,41 +132,18 @@
     
     <section class="article-body markdown-body">
         
-        <h2 id="hexo学习记录"><a href="#hexo学习记录" class="headerlink" title="hexo学习记录"></a>hexo学习记录</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*加载hexo包和相关工具*/</span><br><span class="line"></span><br><span class="line">$ npm install hexo </span><br><span class="line"></span><br><span class="line">$ npm install hexo-server --save  //由于Hexo3.0将服务器模块独立了，所以需要引入</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*初始化hexo项目*/</span><br><span class="line"></span><br><span class="line">$ hexo init [folder]    //新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</span><br><span class="line"></span><br><span class="line">$ hexo new [layout] &lt;title&gt; //新建一篇文章。默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</span><br><span class="line"></span><br><span class="line">$ hexo generate      //生成静态文件。 简写 hexo g</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>启动服务器，默认情况下，访问网址为： <code>http://localhost:4000/</code></p>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p --port</code></td>
-<td>重设端口</td>
-</tr>
-<tr>
-<td><code>-s --static</code></td>
-<td>只使用静态文件</td>
-</tr>
-<tr>
-<td><code>-l --log</code></td>
-<td>启动日记记录，使用覆盖记录格式</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*其他*/</span><br><span class="line"></span><br><span class="line">$ hexo deploy       //$ hexo d 部署网站。</span><br><span class="line"></span><br><span class="line">$ hexo render &lt;file1&gt; [file2] ... //渲染文件。</span><br><span class="line"></span><br><span class="line">$ hexo clean //清除缓存文件 (db.json) 和已生成的静态文件 (public)。</span><br></pre></td></tr></table></figure>
-<h3 id="2、安装hexo主题"><a href="#2、安装hexo主题" class="headerlink" title="2、安装hexo主题"></a>2、安装hexo主题</h3><p>hexo官方主题：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
-<blockquote>
-<p>1、初始化一个hexo工程<br>2、选择一种主题，将文件down下来放入hexo工程的themes文件夹内 （或者进入themes后pull下主题）<br>3、修改下载下来的主题中的_config.yml配置文件，同时修改hexo工程路径下面的_config.yml文件的theme参数，改为你需要的主题名称</p>
-</blockquote>
-<h3 id="3、markdown学习"><a href="#3、markdown学习" class="headerlink" title="3、markdown学习"></a>3、markdown学习</h3><blockquote>
-<p>hexo的bolg编写方式是markdown写法，所以需要学习一下markdown</p>
-</blockquote>
-<h3 id="4、编写文章"><a href="#4、编写文章" class="headerlink" title="4、编写文章"></a>4、编写文章</h3>
+        <h2 id="重新认识JS——step1"><a href="#重新认识JS——step1" class="headerlink" title="重新认识JS——step1"></a>重新认识JS——step1</h2><p>以w3c和js高级程序设计为基础来重新认识js</p>
+<h3 id="什么是js"><a href="#什么是js" class="headerlink" title="什么是js"></a>什么是js</h3><p>1、最流程的脚本语言（反正比php好，啦啦啦）,详情见底部排位图</p>
+<p>2、主要是应用于HTML和Web，但是nodejs的设计让js不在只是适用于网页端，更是想服务端和客户端发展了。（我大前端果然牛逼）</p>
+<h3 id="JS的历史"><a href="#JS的历史" class="headerlink" title="JS的历史"></a>JS的历史</h3><p>Netscape 发明了JavaScript     =&gt;     微软（JScript），Netscope（JavaScript），CEnvi（ScriptEase） 三足鼎立<br>=&gt;    标准化（97年标注化<strong>ECMAScript</strong>出现，<strong>ECMAScript</strong>是标准脚本语言，javascript是以ECMASript为基础来实现的）</p>
+<h3 id="JS的实现"><a href="#JS的实现" class="headerlink" title="JS的实现"></a>JS的实现</h3><p><strong>js的组成部分： ECMASript、DOM、BOM</strong><br><strong>ECMASript</strong>：核心， 描述了该语言的语法和基本对象</p>
+<p><strong>1、DOM</strong>： 文档对象模型，描述了处理网页内容的方法和接口 [Document Object Model]<br>原理： 将网页映射为一个多层节点的结构，DOM树<br>目标：方便开发人员利用DOM开放的API对网页的结构进行增删改查</p>
+<p>从下图的w3c的DOM学习文档中可以看出，DOM提供对于<strong>网页元素的增删改查的API和网页事件*</strong><br><img src="../../images/relearn/relearn-js-img2.png"></p>
+<p>其他DOM：SVG、MathML、SMIL</p>
+<p><strong>2、BOM</strong>：浏览器对象模型 [Browser Object Model]<br>BOM主要是处理浏览器窗口和框架，通常一些js的扩展也会被理解为BOM的一部分<br>扩展：<br><img src="../../images/relearn/relearn-js-img3.png"></p>
+<hr>
+<p><img src="../../images/relearn/relearn-js-img1.jpg"></p>
+
         
     </section>
 </article>
@@ -178,9 +157,9 @@
     <script>
     window.disqus_config = function () {
         this.language = 'zh';
-        this.page.url = 'https://changegt.github.io/public/2018-02-09/hexo-test/';
-        this.page.title = 'hexo-test';
-        this.page.identifier = '2018-02-09/hexo-test/';
+        this.page.url = 'https://changegt.github.io/public/2018-04-22/relearn-js-1/';
+        this.page.title = 'relearn-js-1';
+        this.page.identifier = '2018-04-22/relearn-js-1/';
     };
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
