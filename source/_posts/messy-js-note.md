@@ -44,5 +44,5 @@ tags: [js, es5, es6, es7]
 <img src="../../images/messy/messy-js-img6.png">
 
 ### 2、instanceof 和typeof
-instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。【Object.getPrototypeOf(实例) == constructor.protptype】
+instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性.
 typeof操作符返回一个字符串，表示未经计算的操作数的类型。【**除了原始数据类型返回对应的类型字符串外（null，undefined，string，boolean，number）其他的函数返回function，对象返回object】**
