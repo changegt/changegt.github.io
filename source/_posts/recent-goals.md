@@ -12,8 +12,8 @@ tags: goals
 
 `desc: 实现个人blogs（hexo）的初步使用和深入学习，部署到线上环境，或者github`
 
-> - [x] 实现主题的使用和markdown的使用，初步可以编写blogs【2018年2月第二周】
-> - [ ] 部署hexo，同时实现网页控制启动等行为
+> - [x] 实现主题的使用和markdown的使用，初步可以编写blogs
+> - [x] 部署hexo，同时实现网页控制启动等行为[已经将hexo部署到github上面][地址](https://changegt.github.io/public/index.html)
 > - [ ] 实现网页化编写[方案：网页编辑，后台接口生成md文件，服务端跑脚本实现hexo编译]
 
 ------
@@ -38,7 +38,9 @@ tags: goals
 
 #### 4、 深入vue
 
-> - [ ] 初步掌握引入式和框架式的使用
+> - [x] 初步掌握引入式和框架式的使用
+> - [x] 开发vue框架构建个人站点(login, mainBoard)
+> - [ ] vue+video实现wap端视频播放框架
 
 ------
 

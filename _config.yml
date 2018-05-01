@@ -15,7 +15,7 @@ timezone:
 # url: https://changegt.github.io/public/
 # root: /public/
 
-url: http://localhost:4000/blogs/
+url: http://localhost:4001/blogs/
 root: /blogs/
 permalink: :year-:month-:day/:title/
 permalink_defaults:
@@ -81,3 +81,8 @@ theme: concise
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+server:
+  port: 4001
+  compress: true
+  header: true
